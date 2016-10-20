@@ -1,0 +1,34 @@
+<html>
+    <head>
+    {% if title %}
+    <title>{{ title }}</title>
+    {% else %}
+    <title>site name goes here</title>
+    {% endif %}
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/plain.css') }}">
+    </head>
+    <body>
+        <table>
+            <tr><td><a href="index.html"><img src="static/img/logo.png" alt="site logo.png" width="315" height="75"/></a></td></tr>
+        </table>
+        <!-- <div>Starting content block below:</div> -->
+        {% block content %}{% endblock %}
+
+    <hr></hr>
+    <div class="footerAbout">
+        <span style="color:purple; text-align:right">(c) 2016 site - powered by magic</span>
+    </div>
+    <div class="flash">
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <ul>
+                {% for message in messages %}
+                    <li>{{ message }}
+                {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+    </div>
+    </body>
+</html>
+
